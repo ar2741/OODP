@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string>
+
+// Base class (parent class)
+class Animal {
+public:
+    // Constructor for the base class
+    Animal(const std::string& name) : name(name) {}
+
+    // Public member functions
+    void eat() {
+        std::cout << name << " is eating." << std::endl;
+    }
+
+    void sleep() {
+        std::cout << name << " is sleeping." << std::endl;
+    }
+
+protected:
+    std::string name; // Protected member variable
+};
+
+// Derived class (child class)
+class Dog : public Animal {
+public:
+    // Constructor for the derived class
+    Dog(const std::string& name, const std::string& breed) : Animal(name), breed(breed) {}
+
+    // Public member function specific to the Dog class
+    void bark() {
+        std::cout << name << " (a " << breed << " dog) is barking." << std::endl;
+    }
+
+private:
+    std::string breed; // Private member variable specific to the Dog class
+};
+
+int main() {
+    // Create an instance of the base class
+    Animal genericAnimal("Generic Animal");
+    genericAnimal.eat();
+    genericAnimal.sleep();
+
+    // Create an instance of the derived class
+    Dog myDog("Buddy", "Golden Retriever");
+    myDog.eat(); // Inherited from Animal
+    myDog.sleep(); // Inherited from Animal
+    myDog.bark();
+
+    return 0;
+}
